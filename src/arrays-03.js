@@ -19,8 +19,15 @@
  * @returns {number} The sum.
  */
 function addUpArrayElements(arr) {
-  // TODO: implement code
-  // HINT: Use a loop (for or forEach) to sum the elements.
+  let totalSum = 0;
+
+  arr.forEach(function (num) {
+    totalSum += num;
+  })
+
+  return totalSum;
+
+
 }
 
 /**
@@ -29,8 +36,10 @@ function addUpArrayElements(arr) {
  * @returns {Array<number>} A new array with squared values.
  */
 function makeSquareNumbers(arr) {
-  // TODO: implement code
-  // HINT: Use the map() method.
+  return arr.map(function (num) {
+    return num * num;
+  })
+
 }
 
 /**
@@ -40,7 +49,9 @@ function makeSquareNumbers(arr) {
  * @returns {Array<string>} The filtered array.
  */
 function filterForLargeWords(arr, length) {
-  // TODO: implement code
+  return arr.filter(function (word) {
+    return word.length > length;
+  })
 }
 
 /**
@@ -49,7 +60,9 @@ function filterForLargeWords(arr, length) {
  * @returns {number|undefined} The first even number or undefined.
  */
 function findTheFirstEvenNumber(arr) {
-  // TODO: implement code
+  return arr.find(function (num) {
+    return num % 2 === 0;
+  })
 }
 
 /**
@@ -58,8 +71,12 @@ function findTheFirstEvenNumber(arr) {
  * @returns {Array<string>} The sorted array.
  */
 function sortCaseSensitive(arr) {
-  // TODO: implement code
-  // HINT: Create a shallow copy and then use sort().
+  let copy = [...arr];
+
+  copy.sort();
+
+  return copy;
+
 }
 
 /**
@@ -69,7 +86,7 @@ function sortCaseSensitive(arr) {
  * @returns {string} The resulting string.
  */
 function makeTheString(arr, separator) {
-  // TODO: implement code
+  return arr.join(separator);
 }
 
 /**
@@ -78,7 +95,7 @@ function makeTheString(arr, separator) {
  * @returns {Array} The reversed array.
  */
 function reverseTheArray(arr) {
-  // TODO: implement code
+  return arr.slice().reverse();
 }
 
 /**
@@ -88,8 +105,14 @@ function reverseTheArray(arr) {
  * @returns {Array} The mirror array.
  */
 function makeMirrorArray(arr) {
-  // TODO: implement code
-  // HINT: Use slice (exclude the last element), reverse it, then concat.
+  if (arr.length <= 1) {
+    return [...arr];
+  }
+
+  const reversedPart = [...arr].slice(0, arr.length - 1).reverse();
+
+  return arr.concat(reversedPart);
+
 }
 
 /**
@@ -99,8 +122,12 @@ function makeMirrorArray(arr) {
  * @returns {Array} The resulting array.
  */
 function dropRight(arr, n) {
-  // TODO: implement code
-  // HINT: Use slice() to return elements up to arr.length - n.
+  if (n >= arr.length) {
+    return [];
+  }
+
+  return arr.slice(0, arr.length - n);
+
 }
 
 /**
@@ -110,8 +137,8 @@ function dropRight(arr, n) {
  * @returns {Array} The resulting array.
  */
 function dropLeft(arr, n) {
-  // TODO: implement code
-  // HINT: Use slice() starting at index n.
+  return arr.slice(n);
+
 }
 
 /**
@@ -121,7 +148,7 @@ function dropLeft(arr, n) {
  * @returns {boolean} True if found, false otherwise.
  */
 function checkArrayForValue(arr, val) {
-  // TODO: implement code
+  return arr.includes(val);
 }
 
 module.exports = {
